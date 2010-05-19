@@ -1,0 +1,5 @@
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\Servly\Servly\bin\Release\Servly.exe
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\Servly\Servly\bin\Release\Servly.pdb
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\Servly\Servly\obj\Release\ResolveAssemblyReference.cache
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\Servly\Servly\obj\Release\Servly.exe
+C:\Users\Josh\Documents\Visual Studio 2010\Projects\Servly\Servly\obj\Release\Servly.pdb
