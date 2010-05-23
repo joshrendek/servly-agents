@@ -142,8 +142,8 @@ namespace Servly
             monitor.StopMonitoring();
 
 
-            temp.Add("upload", UploadSpeed);
-            temp.Add("download", DownloadSpeed);
+            temp.Add("upload", (UploadSpeed/8)*1024);
+            temp.Add("download", (DownloadSpeed/8)*1024);
 
             return temp;
         }
