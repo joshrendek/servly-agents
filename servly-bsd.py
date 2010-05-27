@@ -32,8 +32,21 @@ import urllib2, urllib, socket, os, statvfs, commands
 servlyapp = "http://DOMAIN.servly.com/status/update/KEY"
 
 load = os.getloadavg()
-disk = os.statvfs(".")
 
+disk_list = os.popen("df -h | awk {'print $1 \" | \" $NF'}")
+disk_free = 0
+disk_size = 0
+disk_used = 0
+
+for d in disk_list:
+    dd = d.split('\n')[0]
+    if dd.split('|')[1] != " on":
+        disk = os.statvfs(dd.split('|')[1].strip())
+        print dd.split('|')[1].strip()
+        # bytes
+        disk_free += (disk.f_bavail * disk.f_frsize)
+        disk_size += (disk.f_blocks * disk.f_frsize)
+        disk_used += (disk.f_blocks * disk.f_frsize) - (disk.f_bavail * disk.f_frsize)
 # kernel info
 kernel = os.popen("uname -a").readline()
 
@@ -50,10 +63,6 @@ opsys = os.popen("uname").readline()
 conns = int(commands.getoutput("netstat -an | grep -c ':'"))
 
 
-# bytes
-disk_free = (disk.f_bavail * disk.f_frsize)
-disk_size = (disk.f_blocks * disk.f_frsize)
-disk_used = disk_size - disk_free
 
 # memory usage - EXPECTS BYTES TO BE SENT SO MAKE SURE YOU MULTIPLY BY PROP VALUE
 free_memory = 0
