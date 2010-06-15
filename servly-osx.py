@@ -9,7 +9,7 @@ servlyapp = "http://DOMAIN.servly.com/status/update/KEY"
 
 load = os.getloadavg()
 
-disk_list = os.popen("df -h | grep -v : | awk {'print $1 \" | \" $NF'}")
+disk_list = os.popen("df -h -x nfs | awk {'print $1 \" | \" $NF'}")
 disk_free = 0
 disk_size = 0
 disk_used = 0
