@@ -22,7 +22,7 @@ servlyapp = "http://DOMAIN.servly.com/status/update/KEY"
 
 load = os.getloadavg()
 
-disk_list = os.popen("df -h | awk {'print $1 \" | \" $NF'}")
+disk_list = os.popen("df -h | grep -v : | awk {'print $1 \" | \" $NF'}")
 disk_free = 0
 disk_size = 0
 disk_used = 0
@@ -82,9 +82,9 @@ in_bytes_col = 0
 out_bytes_col = 0
 for h in find_iface.split(' '): #find the position column of the if headers
     if len(h) > 0:
-        if h == "Ibytes/s" or h == "rxbyt/s":
+        if h == "Ibytes/s" or h == "rxbyt/s" or h == "rxkB/s":
            in_bytes_col = i
-        if h == "Obytes/s" or h == "txbyt/s":
+        if h == "Obytes/s" or h == "txbyt/s" or h == "txkB/s":
             out_bytes_col = i
         i+=1
 for c in net[3:-1]:
